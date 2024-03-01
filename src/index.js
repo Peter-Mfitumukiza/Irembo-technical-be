@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const cors  = require('cors');
 const authRoutes = require('./routes/auth.routes');
+const importRequestRoutes = require("./routes/importRequest.routes");
 
 // connect to database
 require('./config/db');
@@ -15,7 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/auth", authRoutes);
-
+app.use("/import-request", importRequestRoutes);
 app.get('/', (req, res) => {
     res.send('Welcome to Awesome Url Shortner!');
 });
